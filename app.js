@@ -1,3 +1,6 @@
-import './upload.js'
+import { upload } from './upload.js'
 
-console.log('app.js');
+upload('#file', {
+  multi: true,
+  accept: ['.png', '.jpg', '.jpeg', '.gif']
+})
