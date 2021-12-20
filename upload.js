@@ -14,13 +14,30 @@ export function upload(selector, options = {}) {
   }
 
   input.insertAdjacentElement('afterend', open)
-
-
-
   const triggerInut = () => input.click()
-
   const changeHandler = event => {
 
+    if (!event.target.files.length) {
+      return
+    }
+
+    const files = Array.from(event.target.files)
+
+    files.forEach(file => {
+      if (!file.type.match('image')) {
+        return
+      }
+
+      const reader = new FileReader()
+
+      reader.onload = ev => {
+        console.log(ev);
+        input.insertAdjacentHTML('afterend', `<img src="${ev.target.result}" />`)
+      }
+
+      reader.readAsDataURL(file)
+
+    })
   }
 
   open.addEventListener('click', triggerInut)
