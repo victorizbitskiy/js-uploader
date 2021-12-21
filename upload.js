@@ -1,5 +1,8 @@
 export function upload(selector, options = {}) {
   const input = document.querySelector(selector)
+  const preview = document.createElement('div')
+
+  preview.classList.add('preview')
 
   const open = document.createElement('button')
   open.classList.add('btn')
@@ -13,7 +16,9 @@ export function upload(selector, options = {}) {
     input.setAttribute('accept', options.accept.join(','))
   }
 
+  input.insertAdjacentElement('afterend', preview)
   input.insertAdjacentElement('afterend', open)
+
   const triggerInut = () => input.click()
   const changeHandler = event => {
 
@@ -31,8 +36,12 @@ export function upload(selector, options = {}) {
       const reader = new FileReader()
 
       reader.onload = ev => {
-        console.log(ev);
-        input.insertAdjacentHTML('afterend', `<img src="${ev.target.result}" />`)
+        const src = ev.target.result 
+        preview.insertAdjacentHTML('afterbegin', `
+        <div class="preview-image">
+          <img src="${ev.target.result}" alt="${file.name}"/>
+        </div>
+        `)
       }
 
       reader.readAsDataURL(file)
