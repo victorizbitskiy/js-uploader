@@ -28,6 +28,8 @@ export function upload(selector, options = {}) {
 
     const files = Array.from(event.target.files)
 
+    preview.innerHTML = ''
+
     files.forEach(file => {
       if (!file.type.match('image')) {
         return
@@ -39,6 +41,7 @@ export function upload(selector, options = {}) {
         const src = ev.target.result 
         preview.insertAdjacentHTML('afterbegin', `
         <div class="preview-image">
+        <div class="preview-remove">&times</div>
           <img src="${ev.target.result}" alt="${file.name}"/>
         </div>
         `)
