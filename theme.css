@@ -62,6 +62,7 @@ input[type="file"] {
   position: relative;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
+  overflow: hidden;
 }
 
 .preview-image img {
@@ -71,6 +72,10 @@ input[type="file"] {
 
 .preview-image:hover .preview-remove {
   opacity: 1;
+}
+
+.preview-image:hover .preview-info {
+  bottom: 4px;
 }
 
 .preview-remove {
@@ -87,4 +92,19 @@ input[type="file"] {
   justify-content: center;
   cursor: pointer;
   transition: opacity 0.22s;
+}
+
+.preview-info {
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  left: 0;
+  height: 24px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: bottom 0.22s;
 }
