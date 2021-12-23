@@ -74,10 +74,13 @@ export function upload(selector, options = {}) {
     files = files.filter(file => file.name !== name)
 
     const block = preview
-    .querySelector(`[data-name="${name}"]`)
-    .closest('.preview-image')
+      .querySelector(`[data-name="${name}"]`)
+      .closest('.preview-image')
 
-    block.remove()
+    block.classList.add('removing')
+    setTimeout(() => block.remove(), 300)
+
+    // block.remove()
   }
 
   open.addEventListener('click', triggerInut)
