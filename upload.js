@@ -79,8 +79,6 @@ export function upload(selector, options = {}) {
 
     block.classList.add('removing')
     setTimeout(() => block.remove(), 300)
-
-    // block.remove()
   }
 
   open.addEventListener('click', triggerInut)
