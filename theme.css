@@ -72,7 +72,7 @@ input[type="file"] {
 
 .preview-image.removing {
   transform: scale(0);
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 .preview-image:hover .preview-remove {
@@ -112,4 +112,15 @@ input[type="file"] {
   justify-content: space-between;
   padding: 0 5px;
   transition: bottom 0.22s;
+}
+
+.preview-info-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #42b983;
+  text-align: center;
+  transition: width .22s;
+  width: 30%;
 }

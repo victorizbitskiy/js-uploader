@@ -21,8 +21,11 @@ const element = (tag, classes = [], content) => {
   return node
 }
 
+const noop = function () { }
+
 export function upload(selector, options = {}) {
   let files = []
+  const onUpload = options.onUpload ?? noop
   const input = document.querySelector(selector)
   const preview = element('div', ['preview'],)
   const open = element('button', ['btn'], 'Открыть')
@@ -87,7 +90,7 @@ export function upload(selector, options = {}) {
     const { name } = event.target.dataset
     files = files.filter(file => file.name !== name)
 
-    if(!files.length) {
+    if (!files.length) {
       upload.style.display = 'none'
     }
 
@@ -99,8 +102,16 @@ export function upload(selector, options = {}) {
     setTimeout(() => block.remove(), 300)
   }
 
-  const uploadHandler = event => {
+  const clearPreview = (el) => {
+    el.style.bottom = '4px'
+    el.innerHTML = '<div class="preview-info-progress"></div>'
+  }
 
+  const uploadHandler = event => {
+    preview.querySelectorAll('.preview-remove').forEach(e => e.remove())
+    const previewInfo = preview.querySelectorAll('.preview-info')
+    previewInfo.forEach(clearPreview)
+    onUpload(files)
   }
 
   open.addEventListener('click', triggerInut)
