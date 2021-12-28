@@ -28,9 +28,10 @@ upload('#file', {
 
       uploadTask.on('state_changed', snapshot => {
         const percentage = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0) + '%'
-        // const block = blocks[index].querySelector('.preview-info-progress')
-        // block.textContent = percentage
-        // block.style.width = percentage
+
+        const block = blocks[index].querySelector('.preview-info-progress')
+        block.textContent = percentage
+        block.style.width = percentage
       }, error => {
         console.log(error)
       }, () => {
