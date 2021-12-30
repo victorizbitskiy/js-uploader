@@ -1,3 +1,3 @@
 # js-uploader
 
-[Source](https://www.youtube.com/watch?v=ifroMW_F4Sc&list=PLqKQF2ojwm3nskLXLYIIAgoy2JoACR6eG&index=3)
+[Source](https://www.youtube.com/watch?v=5vx2PVClSVU)
